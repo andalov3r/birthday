@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Birthday Celebration 🎉</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffe66d;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Comic Neue', cursive;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            transform: translateZ(50px);
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .icon-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            background: var(--accent);
+        }
+
+        .icon-item i {
+            font-size: 3rem;
+            transition: color 0.3s ease;
+        }
+
+        .icon-item p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+        }
+
+        .cake-container {
+            position: fixed;
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 1s ease-in-out;
+            z-index: 1000;
+        }
+
+        .cake {
+            width: 250px;
+            height: 200px;
+            background: #f8d9af;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .cake::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #ffe66d;
+            border-radius: 50%;
+        }
+
+        .candles {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .candle {
+            width: 10px;
+            height: 50px;
+            background: white;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 15px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: #ffe66d;
+            border-radius: 50%;
+        }
+
+        .show-cake {
+            bottom: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="birthday-card">
+            <div class="card-header">
+                <h1>🎂 Happy Birthday! 🎉</h1>
+            </div>
+
+            <div class="icon-grid">
+                <div class="icon-item" onclick="showCake()">
+                    <i class="fas fa-birthday-cake"></i>
+                    <p>Cake</p>
+                </div>
+                <div class="icon-item" onclick="playMusic()">
+                    <i class="fas fa-music"></i>
+                    <p>Music</p>
+                </div>
+                <div class="icon-item" onclick="fillHeart()">
+                    <i class="far fa-heart"></i>
+                    <p>Love</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cake Container -->
+    <div class="cake-container">
+        <div class="cake">
+            <div class="candles">
+                <div class="candle"></div>
+                <div class="candle"></div>
+                <div class="candle"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="birthdaySong">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-388.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Show Cake Animation
+        function showCake() {
+            const cakeContainer = document.querySelector('.cake-container');
+            cakeContainer.classList.add('show-cake');
+
+            // Trigger confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff6b6b', '#4ecdc4', '#ffe66d', '#96c93d']
+            });
+        }
+
+        // Fill Heart with Red
+        function fillHeart() {
+            const heartIcon = document.querySelector('.icon-item:nth-child(3) i');
+            heartIcon.classList.remove('far');
+            heartIcon.classList.add('fas');
+            heartIcon.style.color = '#ff6b6b';
+        }
+    </script>
+</body>
+</html>

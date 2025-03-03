@@ -1,0 +1,68 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222;
+    color: white;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    font-size: 18px; /* Increased base font size */
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  #message-box {
+    font-size: 24px; /* Increased font size for the message box */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  #message-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .message-change {
+    animation: scaleUp 0.5s ease-in-out;
+  }
+  
+  @keyframes scaleUp {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  #message-box button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    font-size: 20px; /* Increased font size for the buttons */
+  }
+  
+  #message-box button:hover {
+    background-color: #555;
+  }
+  
+  #message-box button i {
+    margin-right: 5px;
+  }
